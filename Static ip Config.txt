@@ -1,0 +1,31 @@
+Go to location /etc/netplan
+(use cd command in terminal)
+
+Use command :- sudo nano (file name).yaml
+
+Change the values in yaml file as given here in red lines
+Yaml is sensitive to spaces so don’t add unnecessary  spaces in the file as it may cause problems
+At last enter the following command: 
+sudo netplan apply
+
+
+.yaml file 
+
+
+network:
+    version: 2
+    wifis:
+        renderer: networkd
+        wlan0:
+            access-points:
+                Home 5G:
+                    password: encode password don’t change
+            dhcp4: no
+            optional: true
+            addresses:
+              - 192.168.29.14/24
+            routes:
+              - to: default
+                via: 192.168.29.1
+            nameservers:
+                addresses:  [1.1.1.1, 1.0.0.1]
